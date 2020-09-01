@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
+const usersRouter = require('./user/users-router')
 
 const app = express()
 
@@ -15,11 +16,13 @@ app.use(morgan(morganOption))
 app.use(helmet())
 app.use(cors())
 
+app.use('/api/users', usersRouter)
+
 // epStart = EndPointStart, this automatically changes the server test
 const epStart = '/';
-const subnauticaGreet = 'Welcome aboard Captain, all systems online.';
+const startupGreet = 'Welcome aboard Captain, all systems online.';
 app.get(epStart, (req, res) => {
-  res.send(subnauticaGreet)
+  res.send(startupGreet)
 })
 
 app.use(function errorHandler(error, req, res, next) {
@@ -33,4 +36,4 @@ app.use(function errorHandler(error, req, res, next) {
   res.status(500).json(response);
 });
 
-module.exports = { app, epStart, subnauticaGreet }
+module.exports = { app, epStart, startupGreet }
