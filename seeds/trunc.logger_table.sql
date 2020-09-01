@@ -1,0 +1,3 @@
+TRUNCATE
+  logger_users
+  RESTART IDENTITY CASCADE;
