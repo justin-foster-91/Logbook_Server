@@ -10,12 +10,15 @@ UsersRouter
     const { password, username, } = req.body
 
     for (const field of ['username', 'password'])
-    if (!req.body[field])
-      return res.status(400).json({
-        error: `Missing '${field}' in request body`
-      })
+      if (!req.body[field])
+        return res.status(400).json({
+          error: `Missing '${field}' in request body`
+        })
 
+    // LEARN: Did I format this properly or should it be 'const password'
     const passwordError = await UsersService.validatePassword(password)
+    // const passwordError = UsersService.validatePassword(password)
+
 
     if (passwordError)
       return res.status(400).json({ error: passwordError }) 

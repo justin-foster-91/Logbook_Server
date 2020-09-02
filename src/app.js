@@ -4,10 +4,12 @@ const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
+const authRouter = require('./auth/auth-router')
 const usersRouter = require('./users/users-router')
 
 const app = express()
 
+// LEARN: The example option has a skip at the end. Do I need that?
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
   : 'common';
@@ -17,6 +19,7 @@ app.use(morgan(morganOption))
 app.use(helmet())
 app.use(cors())
 
+app.use('/api/auth', authRouter)
 app.use('/api/users', usersRouter)
 
 // epStart = EndPointStart, this automatically changes the server test
