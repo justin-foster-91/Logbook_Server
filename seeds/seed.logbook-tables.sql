@@ -1,10 +1,10 @@
 BEGIN;
 
 TRUNCATE
-  logger_users
+  logbook_users
   RESTART IDENTITY CASCADE;
 
-INSERT INTO logger_users (username, password)
+INSERT INTO logbook_users (username, password)
 VALUES
   ('dunder', '$2a$12$lHK6LVpc15/ZROZcKU00QeiD.RyYq5dVlV/9m4kKYbGibkRc5l4Ne'),
   ('b.deboop', '$2a$12$VQ5HgWm34QQK2rJyLc0lmu59cy2jcZiV6U1.bE8rBBnC9VxDf/YQO'),

@@ -1,3 +1,3 @@
 TRUNCATE
-  logger_users
+  logbook_users
   RESTART IDENTITY CASCADE;
