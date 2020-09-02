@@ -15,9 +15,7 @@ UsersRouter
         error: `Missing '${field}' in request body`
       })
 
-    // TODO: check user_name doesn't start with spaces
-
-    const passwordError = UsersService.validatePassword(password)
+    const passwordError = await UsersService.validatePassword(password)
 
     if (passwordError)
       return res.status(400).json({ error: passwordError }) 
@@ -45,9 +43,10 @@ UsersRouter
       )
       return res
         .status(201)
-        // .location(path.posix.join(req.originalUrl, `/${user.id}`))
+        // LEARN: What does this line do?
+        .location(path.posix.join(req.originalUrl, `/${user.id}`))
         .json(UsersService.serializeUser(user))
-        
+
     } catch(e) {
       return next;
     }
