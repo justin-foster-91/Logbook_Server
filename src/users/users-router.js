@@ -31,6 +31,7 @@ UsersRouter
 
       const hashedPassword = await UsersService.hashPassword(password)
 
+      // TODO: remove console log
       console.log("User saved to db");
       const newUser = {
         username,
