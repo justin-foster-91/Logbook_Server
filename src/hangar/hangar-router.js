@@ -1,48 +1,20 @@
 const express = require('express')
-const AuthService = require('./auth-service')
+const HangarService = require('./hangar-service')
 const { requireAuth } = require('../middleware/jwt-auth')
 
-const authRouter = express.Router()
+const hangarRouter = express.Router()
 const jsonBodyParser = express.json()
 
 hangarRouter
-  .post('/login', jsonBodyParser,(req, res, next) => {
-    console.log("/login");
-    const { username, password } = req.body
-    const loginUser = { username, password }
+  .route('/')
+  .all(requireAuth)
+  .get((req, res, next) => {
+    // console.log(JSON.stringify(req.headers));
+    // console.log(JSON.stringify(req.query));
+    console.log(req.user);
 
-    for (const [key, value] of Object.entries(loginUser))
-      if (value == null)
-        return res.status(400).json({
-          error: `Missing '${key}' in request body`
-        })
-    
-    AuthService.getUserWithUserName(
-      req.app.get('db'),
-      loginUser.username
-    )
-      .then(dbUser => {
-        if (!dbUser)
-          return res.status(400).json({
-            error: 'Incorrect username or password',
-          })
-
-        return AuthService.comparePasswords(loginUser.password, dbUser.password)
-          .then(compareMatch => {
-            console.log("Inside password compare", compareMatch);
-            if (!compareMatch)
-              return res.status(400).json({
-                error: 'Incorrect username or password',
-              })
-
-            const sub = dbUser.username
-            const payload = { user_id: dbUser.id }
-            res.send({
-              authToken: AuthService.createJwt(sub, payload),
-            })
-          })
-      })
-      .catch(next)
   })
+  // .post('/hangar', jsonBodyParser,(req, res, next) => {
 
-hangar.export = hangarRouter
+  // })
+module.exports = hangarRouter
