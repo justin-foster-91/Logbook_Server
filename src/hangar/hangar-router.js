@@ -9,9 +9,7 @@ hangarRouter
   .route('/')
   .all(requireAuth)
   .get((req, res, next) => {
-    // console.log(JSON.stringify(req.headers));
-    // console.log(JSON.stringify(req.query));
-    console.log(req.user);
+    // console.log(req.user);
 
   })
   // .post('/hangar', jsonBodyParser,(req, res, next) => {
