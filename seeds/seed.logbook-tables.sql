@@ -1,8 +1,8 @@
 BEGIN;
 
 TRUNCATE
-  logbook_users
-  -- logbook_ships
+  logbook_users,
+  logbook_ships
   RESTART IDENTITY CASCADE;
 
 INSERT INTO logbook_users (username, password)
@@ -14,13 +14,13 @@ VALUES
   ('lexlor', '$2a$12$Hq9pfcWWvnzZ8x8HqJotveRHLD13ceS7DDbrs18LpK6rfj4iftNw.'),
   ('wippy', '$2a$12$ntGOlTLG5nEXYgDVqk4bPejBoJP65HfH2JEMc1JBpXaVjXo5RsTUu');
 
--- INSERT INTO logbook_ships (user_id, ship_name)
--- VALUES
---   (7, 'Loreseeker'),
---   (7, 'Ship 2'),
---   (7, 'Ship 3'),
---   (1, 'Ship 1'),
---   (1, 'Ship 2'),
---   (3, 'Ship 1');
+INSERT INTO logbook_ships (user_id, ship_name)
+VALUES
+  (1, 'Loreseeker'),
+  (1, 'Ship 2'),
+  (1, 'Ship 3'),
+  (2, 'Ship 1'),
+  (2, 'Ship 2'),
+  (3, 'Ship 1');
 
 COMMIT;
