@@ -18,7 +18,18 @@ hangarRouter
       console.log(ships)
       res.status(200).json(ships);
       })
+  })
 
+hangarRouter
+  .route('/:ship_id')
+  .all(requireAuth)
+  // .all(checkShipExists)
+  .get((req, res) => {
+    // res.json(ArticlesService.serializeArticle(res.article))
+    res.json({
+      ship_name: "Todd", 
+      ship_parts: [{frame: "thisThing", cost: 12}]
+    })
   })
   // .post('/hangar', jsonBodyParser,(req, res, next) => {
 
