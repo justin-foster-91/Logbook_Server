@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS ship_frame, ship_maneuverability;

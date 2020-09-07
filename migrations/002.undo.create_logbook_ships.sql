@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS logbook_ships;
+DROP TABLE IF EXISTS user_ships;
