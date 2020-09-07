@@ -8,7 +8,7 @@ CREATE TABLE user_ships (
   date_modified TIMESTAMP,
   CONSTRAINT fk_user
     FOREIGN KEY(user_id)
-      REFERENCES users(id)
+      REFERENCES logbook_users(id)
 );    
 
 -- CREATE TABLE logbook_ships (

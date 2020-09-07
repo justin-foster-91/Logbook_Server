@@ -4,8 +4,8 @@ const config = require('../config')
 
 const HangarService = {
   getShipsWithUser(db, user) {
-    const ships = db('logbook_ships')
-      .where({ user_id: user.user_id })
+    const ships = db('user_ships')
+      .where({ user_id: user.id })
       return (
         ships
       );

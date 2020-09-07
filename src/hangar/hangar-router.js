@@ -30,7 +30,7 @@ hangarRouter
       )
     .then(ship => {
       // Get Specific ship (Dummy data)
-      console.log("Ship :", ship[0]);
+      // console.log("Ship :", ship[0]);
       res.status(207).json({
         ship_name: "Todd", 
         ship_parts: [{frame: "Default Frame", cost: 12}]
@@ -39,4 +39,4 @@ hangarRouter
     })
   // .post('/hangar', jsonBodyParser,(req, res, next) => {
   })
-module.exports = hangarRouter
+module.exports = hangarRouter 
