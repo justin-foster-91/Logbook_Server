@@ -7,16 +7,12 @@ CREATE TABLE ship_frame (
   HP_increment INTEGER NOT NULL,
   DT INTEGER,
   CT INTEGER,
-  weapon_mounts TEXT NOT NULL,
   expansion_bays INTEGER NOT NULL,
   min_crew INTEGER NOT NULL,
   max_crew INTEGER NOT NULL,
   BP_cost INTEGER NOT NULL,
   special_abilities TEXT,
-  source TEXT,
-  CONSTRAINT fk_mounts
-    FOREIGN KEY(weapon_mounts)
-      REFERENCES 'class'_mounts('do I need this if I want the whole table?')
+  source TEXT
 );
 -- Set weapon_mounts to require foreign key with variable table based off of 'class'
 -- DECLARE  { @LOCAL_VARIABLE[AS] data_type  [ = value ] } 
