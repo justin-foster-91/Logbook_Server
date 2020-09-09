@@ -29,4 +29,29 @@ const thrusterList = [
   {name: 'C8 thrusters', cost: 16},
 ]
 
-module.exports = { thrusterList }
+const coreList = [
+  {name: 'Micron Light', cost: 4},
+  {name: 'Micron Heavy', cost: 6},
+  {name: 'Micron Ultra', cost: 8},
+  {name: 'Arcus Light', cost: 7},
+  {name: 'Pulse Brown', cost: 9},
+  {name: 'Pulse Black', cost: 12},
+  {name: 'Pulse White', cost: 14},
+  {name: 'Pulse Gray', cost: 10},
+  {name: 'Arcus Heavy', cost: 13},
+  {name: 'Pulse Green', cost: 15},
+  {name: 'Pulse Red', cost: 17},
+  {name: 'Pulse Blue', cost: 20},
+  {name: 'Arcus Ultra', cost: 15},
+  {name: 'Arcus Maximum', cost: 20},
+  {name: 'Pulse Orange', cost: 25},
+  {name: 'Pulse Prismatic', cost: 30},
+  {name: 'Nova Light', cost: 15},
+  {name: 'Nova Heavy', cost: 20},
+  {name: 'Nova Ultra', cost: 30},
+  {name: 'Gateway Light', cost: 30},
+  {name: 'Gateway Heavy', cost: 40},
+  {name: 'Gateway Ultra', cost: 50},
+]
+
+module.exports = { thrusterList, coreList }

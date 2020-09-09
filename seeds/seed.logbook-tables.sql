@@ -16,14 +16,14 @@ VALUES
   ('wippy', '$2a$12$ntGOlTLG5nEXYgDVqk4bPejBoJP65HfH2JEMc1JBpXaVjXo5RsTUu');
 
 -- Create ship_parts that references tier, frame, engine, power core, etc.
-INSERT INTO user_ships (user_id, ship_name, thrusters)
+INSERT INTO user_ships (user_id, ship_name, core, thrusters)
 VALUES
-  (1, 'Loreseeker', 'T8 thrusters'),
-  (1, 'Ship 2', 'T6 thrusters'),
-  (1, 'Ship 3', 'T6 thrusters'),
-  (2, 'Ship 1', 'T6 thrusters'),
-  (2, 'Ship 2', 'T6 thrusters'),
-  (3, 'Ship 1', 'T6 thrusters');
+  (1, 'Loreseeker', 'Micron Light', 'T6 thrusters'),
+  (1, 'Ship 2', 'Micron Light', 'T6 thrusters'),
+  (1, 'Ship 3', 'Micron Light', 'T6 thrusters'),
+  (2, 'Ship 1', 'Micron Light', 'T6 thrusters'),
+  (2, 'Ship 2', 'Micron Light', 'T6 thrusters'),
+  (3, 'Ship 1', 'Micron Light', 'T6 thrusters');
 
 -- INSERT INTO ship_tier (tier, tier_text, BP, special)
 -- VALUES
