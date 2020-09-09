@@ -16,14 +16,14 @@ VALUES
   ('wippy', '$2a$12$ntGOlTLG5nEXYgDVqk4bPejBoJP65HfH2JEMc1JBpXaVjXo5RsTUu');
 
 -- Create ship_parts that references tier, frame, engine, power core, etc.
-INSERT INTO user_ships (user_id, ship_name, core, thrusters)
+INSERT INTO user_ships (user_id, ship_name, core, thrusters, armor, computer, defenses, sensors, shields, engines)
 VALUES
-  (1, 'Loreseeker', 'Micron Light', 'T6 thrusters'),
-  (1, 'Ship 2', 'Micron Light', 'T6 thrusters'),
-  (1, 'Ship 3', 'Micron Light', 'T6 thrusters'),
-  (2, 'Ship 1', 'Micron Light', 'T6 thrusters'),
-  (2, 'Ship 2', 'Micron Light', 'T6 thrusters'),
-  (3, 'Ship 1', 'Micron Light', 'T6 thrusters');
+  (1, 'Loreseeker', 'Micron Light', 'T6 thrusters', 'Mk 1 armor', 'Basic Computer', 'Mk 1 defenses', 'Cut-rate', 'Mk 1 Basic Shields', 'Signal Basic'),
+  (1, 'Ship 2', 'Micron Light', 'T6 thrusters', 'Mk 1 armor', 'Basic Computer', 'Mk 1 defenses', 'Cut-rate', 'Mk 1 Basic Shields', 'Signal Basic'),
+  (1, 'Ship 3', 'Micron Light', 'T6 thrusters', 'Mk 1 armor', 'Basic Computer', 'Mk 1 defenses', 'Cut-rate', 'Mk 1 Basic Shields', 'Signal Basic'),
+  (2, 'Ship 1', 'Micron Light', 'T6 thrusters', 'Mk 1 armor', 'Basic Computer', 'Mk 1 defenses', 'Cut-rate', 'Mk 1 Basic Shields', 'Signal Basic'),
+  (2, 'Ship 2', 'Micron Light', 'T6 thrusters', 'Mk 1 armor', 'Basic Computer', 'Mk 1 defenses', 'Cut-rate', 'Mk 1 Basic Shields', 'Signal Basic'),
+  (3, 'Ship 1', 'Micron Light', 'T6 thrusters', 'Mk 1 armor', 'Basic Computer', 'Mk 1 defenses', 'Cut-rate', 'Mk 1 Basic Shields', 'Signal Basic');
 
 -- INSERT INTO ship_tier (tier, tier_text, BP, special)
 -- VALUES

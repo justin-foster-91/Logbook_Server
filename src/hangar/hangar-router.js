@@ -6,7 +6,7 @@ const parts_lists = require('./parts_lists')
 const hangarRouter = express.Router()
 const jsonBodyParser = express.json()
 
-const { thrusterList, coreList } = parts_lists
+const { partsList } = parts_lists
 
 hangarRouter
   .route('/')
@@ -39,17 +39,22 @@ hangarRouter
       // })
 
       if(ship){
-        const thruster = thrusterList.find(thruster => ship.thrusters === thruster.name)
-        const thrusterCost = thruster.cost
-        const core = coreList.find(core => ship.core === core.name)
-        const coreCost = core.cost
-
+        const partAndOptions = (partType) => {
+          return {name: ship[partType], 
+          options: partsList[partType + 'List'], 
+          cost: partsList.findCost(partType + 'List', ship[partType])}
+        }
         ship.ship_parts = {
-          thrusters: {name: ship.thrusters, options: thrusterList, cost: thrusterCost},
-          core: {name: ship.core, options: coreList, cost: coreCost}
+          thrusters: partAndOptions('thrusters'),
+          core: partAndOptions('core'),
+          armor: partAndOptions('armor'),
+          computer: partAndOptions('computer'),
+          defenses: partAndOptions('defenses'),
+          sensors: partAndOptions('sensors'),
+          engines: partAndOptions('engines')
         }
         res.status(208).json(ship)
-        // console.log("ship.thrusters ", ship.thrusters);
+        // console.log("partsList: ", partsList[0]);
       } else {
         res.sendStatus(404)
       }

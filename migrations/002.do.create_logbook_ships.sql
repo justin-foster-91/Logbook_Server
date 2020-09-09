@@ -4,6 +4,12 @@ CREATE TABLE user_ships (
   ship_name TEXT NOT NULL,
   core TEXT NOT NULL,
   thrusters TEXT NOT NULL,
+  armor TEXT NOT NULL,
+  computer TEXT NOT NULL,
+  defenses TEXT NOT NULL,
+  sensors TEXT NOT NULL,
+  shields TEXT NOT NULL,
+  engines TEXT NOT NULL,
   date_created TIMESTAMP DEFAULT now() NOT NULL,
   date_modified TIMESTAMP,
   CONSTRAINT fk_user

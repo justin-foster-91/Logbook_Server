@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS ship_tier;
+-- DROP TABLE IF EXISTS ship_tier;
