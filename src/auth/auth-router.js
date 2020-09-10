@@ -7,7 +7,7 @@ const jsonBodyParser = express.json()
 
 authRouter
   .post('/login', jsonBodyParser,(req, res, next) => {
-    console.log("/login");
+    // console.log("/login");
     const { username, password } = req.body
     const loginUser = { username, password }
 
@@ -29,7 +29,7 @@ authRouter
 
         return AuthService.comparePasswords(loginUser.password, dbUser.password)
           .then(compareMatch => {
-            console.log("Inside password compare", compareMatch);
+            // console.log("Inside password compare", compareMatch);
             if (!compareMatch)
               return res.status(400).json({
                 error: 'Incorrect username or password',

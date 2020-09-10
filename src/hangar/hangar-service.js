@@ -19,7 +19,7 @@ const HangarService = {
       );
   },
   changeShipPart(db, shipId, partType, partName) {
-    console.log('Test');
+    // console.log('Test');
     return db('user_ships').update(partType, partName).where({ id: shipId }).returning('*')
     // const ship = db('user_ships')
     //   .where({ id: shipId })
