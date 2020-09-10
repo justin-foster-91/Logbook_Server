@@ -18,6 +18,16 @@ const HangarService = {
         ship
       );
   },
+  changeShipPart(db, shipId, partType, partName) {
+    console.log('Test');
+    return db('user_ships').update(partType, partName).where({ id: shipId }).returning('*')
+    // const ship = db('user_ships')
+    //   .where({ id: shipId })
+    //   .first()
+    //   return (
+    //     ship
+    //   );
+  },
   verifyJwt(token) {
     return jwt.verify(token, config.JWT_SECRET, {
       algorithms: ['HS256'],

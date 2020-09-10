@@ -51,13 +51,54 @@ hangarRouter
           computer: partAndOptions('computer'),
           defenses: partAndOptions('defenses'),
           sensors: partAndOptions('sensors'),
+          shields: partAndOptions('shields'),
           engines: partAndOptions('engines')
         }
-        res.status(208).json(ship)
+        res.status(200).json(ship)
         // console.log("partsList: ", partsList[0]);
       } else {
         res.sendStatus(404)
       }
     })
   })
+
+hangarRouter
+  .route('/:ship_id')
+  .all(requireAuth)
+  // .all(checkShipExists)
+  .post(jsonBodyParser, (req, res, next) => {
+    const { partType, partName } = req.body
+    
+    HangarService.changeShipPart( 
+      req.app.get('db'),
+      req.params.ship_id, partType, partName
+    )
+
+    .then(ship => {
+      ship = ship[0]
+      if(ship){
+        ship[partType] = partName
+        const partAndOptions = (partType) => {
+          return {name: ship[partType], 
+          options: partsList[partType + 'List'], 
+          cost: partsList.findCost(partType + 'List', ship[partType])}
+        }
+        ship.ship_parts = {
+          thrusters: partAndOptions('thrusters'),
+          core: partAndOptions('core'),
+          armor: partAndOptions('armor'),
+          computer: partAndOptions('computer'),
+          defenses: partAndOptions('defenses'),
+          sensors: partAndOptions('sensors'),
+          shields: partAndOptions('shields'),
+          engines: partAndOptions('engines')
+        }
+        res.status(200).json(ship)
+      } else {
+        res.sendStatus(404)
+      }
+    })
+  })
+
+
 module.exports = hangarRouter 
