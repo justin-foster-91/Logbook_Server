@@ -27,7 +27,7 @@ hangarRouter
       req.user
       )
     .then(ship => {
-      console.log(ship);
+      // console.log(ship);
       res.status(200).json(ship[0]);
     })
   })
