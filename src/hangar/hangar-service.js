@@ -18,6 +18,11 @@ const HangarService = {
         ship
       );
   },
+  deleteShipByUserAndId(db, user, ship_id) {
+    return db('user_ships')
+    .where({ user_id: user.id, id: parseInt(ship_id, 10) })
+    .delete()
+  },
   changeShipPart(db, shipId, partType, partName) {
     // console.log('Test');
     return db('user_ships').update(partType, partName).where({ id: shipId }).returning('*')
@@ -27,6 +32,21 @@ const HangarService = {
     //   return (
     //     ship
     //   );
+  },
+  createShipForUser(db, user) {
+    return db('user_ships').insert({
+      user_id: user.id, 
+      ship_name: 'New Ship', 
+      core: 'Micron Light', 
+      thrusters: 'T6 thrusters', 
+      armor: 'Mk 1 armor', 
+      computer: 'Basic Computer', 
+      defenses: 'Mk 1 defenses', 
+      sensors: 'Cut-rate', 
+      shields: 'Mk 1 Basic Shields', 
+      engines: 'Signal Basic'
+    })
+    .returning('*')
   },
   verifyJwt(token) {
     return jwt.verify(token, config.JWT_SECRET, {

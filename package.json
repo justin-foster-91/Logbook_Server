@@ -14,7 +14,7 @@
     "deploy": "git push heroku master",
     "postdeploy": "npm run migrate:production",
     "seed": "psql -U admin -d logbook -f ./seeds/seed.logbook-tables.sql",
-    "seed:production": "pg:psql -U admin -d logbook -f ./seeds/seed.logbook-tables.sql"
+    "seed:production": "pg:psql -f ./seeds/seed.logbook-tables.sql"
   },
   "keywords": [],
   "engines": {

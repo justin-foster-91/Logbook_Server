@@ -21,6 +21,16 @@ hangarRouter
       res.status(200).json(ships);
     })
   })
+  .post(jsonBodyParser, (req, res, next) => {
+    HangarService.createShipForUser( 
+      req.app.get('db'),
+      req.user
+      )
+    .then(ship => {
+      console.log(ship);
+      res.status(200).json(ship[0]);
+    })
+  })
 
 hangarRouter
   .route('/:ship_id')
@@ -61,6 +71,16 @@ hangarRouter
       }
     })
   })
+  .delete((req, res, next) => {
+    HangarService.deleteShipByUserAndId( 
+      req.app.get('db'),
+      req.user, req.params.ship_id
+      )
+      .then(() =>
+        res.status(200).json({message: 'ok'})
+      )
+  })
+
 
 hangarRouter
   .route('/:ship_id')
@@ -99,6 +119,5 @@ hangarRouter
       }
     })
   })
-
 
 module.exports = hangarRouter 
