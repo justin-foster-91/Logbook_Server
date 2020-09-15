@@ -30,9 +30,27 @@ function makeUsersArray() {
   ]
 }
 
+function makeShipsArray() {
+  return [
+    {
+      user_id: 1,
+      ship_name: 'Ship 2',
+      core: 'Micron Light',
+      thrusters: 'T6 thrusters',
+      armor: 'Mk 1 armor',
+      computer: 'Basic Computer',
+      defenses: 'Mk 1 defenses',
+      sensors: 'Cut-rate',
+      shields: 'Mk 1 Basic Shields',
+      engines: 'Signal Basic',
+    }
+  ]
+}
+
 function makeArticlesFixtures() {
   const testUsers = makeUsersArray()
-  return { testUsers }
+  const testShips = makeShipsArray()
+  return { testUsers, testShips }
 }
 
 function cleanTables(db) {
@@ -46,6 +64,22 @@ function cleanTables(db) {
       Promise.all([
         trx.raw(`ALTER SEQUENCE logbook_users_id_seq minvalue 0 START WITH 1`),
         trx.raw(`SELECT setval('logbook_users_id_seq', 0)`),
+      ])
+    )
+  )
+}
+
+function cleanShipTables(db) {
+  return db.transaction(trx =>
+    trx.raw(
+      `TRUNCATE
+        user_ships
+      `
+    )
+    .then(() =>
+      Promise.all([
+        trx.raw(`ALTER SEQUENCE user_ships_id_seq minvalue 0 START WITH 1`),
+        trx.raw(`SELECT setval('user_ships_id_seq', 0)`),
       ])
     )
   )
@@ -74,8 +108,23 @@ function seedUsers(db, users) {
     )
 }
 
+function seedShips(db, ships) {
+  const preppedShips = ships.map(ship => ({
+    ...ship
+  }))
+  return db.into('user_ships').insert(preppedShips)
+    .then(() =>
+      // update the auto sequence to stay in sync
+      db.raw(
+        `SELECT setval('user_ships_id_seq', ?)`,
+        [ships[ships.length - 1].id],
+      )
+    )
+}
+
 module.exports = {
   makeUsersArray,
+  makeShipsArray,
   // makeArticlesArray,
   // makeExpectedArticle,
   // makeExpectedArticleComments,
@@ -84,8 +133,10 @@ module.exports = {
 
   makeArticlesFixtures,
   cleanTables,
+  cleanShipTables,
   // seedArticlesTables,
   // seedMaliciousArticle,
   makeAuthHeader,
   seedUsers,
+  seedShips,
 }

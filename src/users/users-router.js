@@ -15,10 +15,8 @@ UsersRouter
           error: `Missing '${field}' in request body`
         })
 
-    // LEARN: Did I format this properly or should it be 'const password'
     const passwordError = await UsersService.validatePassword(password)
     // const passwordError = UsersService.validatePassword(password)
-
 
     if (passwordError)
       return res.status(400).json({ error: passwordError }) 
@@ -54,7 +52,6 @@ UsersRouter
     } catch(e) {
       return next;
     }
-
   })
 
 module.exports = UsersRouter
