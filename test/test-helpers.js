@@ -33,6 +33,7 @@ function makeUsersArray() {
 function makeShipsArray() {
   return [
     {
+      id: 1,
       user_id: 1,
       ship_name: 'Ship 2',
       core: 'Micron Light',
@@ -57,13 +58,16 @@ function cleanTables(db) {
   return db.transaction(trx =>
     trx.raw(
       `TRUNCATE
+        user_ships,
         logbook_users
       `
     )
     .then(() =>
       Promise.all([
         trx.raw(`ALTER SEQUENCE logbook_users_id_seq minvalue 0 START WITH 1`),
+        trx.raw(`ALTER SEQUENCE user_ships_id_seq minvalue 0 START WITH 1`),
         trx.raw(`SELECT setval('logbook_users_id_seq', 0)`),
+        trx.raw(`SELECT setval('user_ships_id_seq', 0)`),
       ])
     )
   )

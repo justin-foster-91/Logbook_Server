@@ -1,5 +1,5 @@
 TRUNCATE
-  logbook_users,
-  user_ships
+  user_ships,
+  logbook_users
   -- ship_tier
   RESTART IDENTITY CASCADE;

@@ -35,19 +35,13 @@ hangarRouter
 hangarRouter
   .route('/:ship_id')
   .all(requireAuth)
-  // .all(checkShipExists)
+  .all(checkShipExists)
   .get((req, res, next) => {
     HangarService.getShipsWithUserAndId( 
       req.app.get('db'),
       req.user, req.params.ship_id
       )
     .then(ship => {
-      // console.log(req.params.ship_id);
-      // res.status(207).json({
-      //   ship_name: "Todd", 
-      //   ship_parts: [{frame: "Default Frame", cost: 12}]
-      // })
-
       if(ship){
         const partAndOptions = (partType) => {
           return {name: ship[partType], 
@@ -65,7 +59,6 @@ hangarRouter
           engines: partAndOptions('engines')
         }
         res.status(200).json(ship)
-        // console.log("partsList: ", partsList[0]);
       } else {
         res.sendStatus(404)
       }
@@ -85,7 +78,7 @@ hangarRouter
 hangarRouter
   .route('/:ship_id')
   .all(requireAuth)
-  // .all(checkShipExists)
+  .all(checkShipExists)
   .post(jsonBodyParser, (req, res, next) => {
     const { partType, partName } = req.body
     

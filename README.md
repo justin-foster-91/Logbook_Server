@@ -1,26 +1,33 @@
-# Express Boilerplate!
+# Logbook Capstone
 
-This is a boilerplate project used for starting new projects!
 
-## Set up
+## Team
+Justin Foster (github: justin-foster-91)
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+### Live Page
+https://starfinder-client.justin-foster-91.vercel.app/
 
-## Scripts
 
-Start the application `npm start`
+### Demo Account
+Username: dunder
 
-Start nodemon for the application `npm run dev`
+Password: password
 
-Run the tests `npm test`
 
-## Deploying
+### Capstone Statement
+This app sets the framework for future versions where it will allow users to track spaceship combat for the Starfinder tabletop game. 
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+It currently allows users to create an account with an encrypted password, then log and and view their 'Hangar' page that shows a list of all their ships. They can create a new ship and customize the parts, or click on any existing ship to enter the customization page.
+
+[Hangar Page](https://i.imgur.com/oEjakqP.png)
+
+On the 'Customization' page, all changes selected from the dropdown menu are automatically saved to the database. These changes are returned and displayed, showing the selected part name and displaying the new cost.
+
+[Customizer Page](https://i.imgur.com/QmTNSON.png)
+
+
+#### Technology Used
+Front End: JavaScript, React, HTML5, CSS3 
+
+Back End: Node.js, Express, PostgresSQL, Mocha & Chai, REST APIs 3 
