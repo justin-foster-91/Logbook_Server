@@ -17,7 +17,6 @@ hangarRouter
       req.user
       )
     .then(ships => {
-      // console.log("Ships: ", ships);
       res.status(200).json(ships);
     })
   })
@@ -35,7 +34,6 @@ hangarRouter
 hangarRouter
   .route('/:ship_id')
   .all(requireAuth)
-  .all(checkShipExists)
   .get((req, res, next) => {
     HangarService.getShipsWithUserAndId( 
       req.app.get('db'),
@@ -78,7 +76,6 @@ hangarRouter
 hangarRouter
   .route('/:ship_id')
   .all(requireAuth)
-  .all(checkShipExists)
   .post(jsonBodyParser, (req, res, next) => {
     const { partType, partName } = req.body
     

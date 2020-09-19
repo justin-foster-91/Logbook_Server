@@ -25,7 +25,7 @@ describe('Hangar Endpoints', function() {
 
   afterEach('cleanup', () => helpers.cleanTables(db))
 
-  describe.only(`POST /api/hangar`, () => {
+  describe(`POST /api/hangar`, () => {
     beforeEach('insert users', () =>
       helpers.seedUsers(
         db,
