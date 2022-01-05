@@ -10,7 +10,7 @@
     "migrate:test": "env NODE_ENV=test npm run migrate",
     "migrate:production": "env SSL=true DATABASE_URL='postgres://oqnsdeyvufhbvy:6e860fee3dce2358a530527cabfbd8244ec01a9e52fa2caa9b06fbf04c273a2e@ec2-52-21-247-176.compute-1.amazonaws.com:5432/d6mhvt44r8ip7c' npm run migrate",
     "start": "node src/server.js",
-    "predeploy": "npm audit && npm run migrate:production",
+    "predeploy": "npm run migrate:production",
     "deploy": "git push heroku master",
     "postdeploy": "npm run migrate:production",
     "seed": "psql -U admin -d logbook -f ./seeds/seed.logbook-tables.sql",
